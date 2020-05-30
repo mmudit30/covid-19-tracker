@@ -3,19 +3,19 @@ import { fetchDailyData } from '../../api';
 import { Bar, Line } from 'react-chartjs-2';
 import styles from './Chart.module.css';
 
-const Chart = () => {
+const Chart = ({data: {confirmed, recovered, deaths}, country}) => {
 
     const [dailyData, setDailyData]= useState([]);
 
     useEffect(() => {
-        if(!dailyData.length){
+        // if(!dailyData.length){
             const fetchApi = async() => {
                 setDailyData(await fetchDailyData());
             }
             // console.log(dailyData);            
             fetchApi();
-        }
-    }, [dailyData]);
+        // }
+    }, []);
 
     const Linechart = ()=>
         (
@@ -40,10 +40,34 @@ const Chart = () => {
          }
          ></Line> ) : (<div></div>)
         )
+    console.log(confirmed, recovered, deaths);
+    
+    const Barchart =() =>(
+        confirmed ?
+        (<Bar
+          data={{
+              labels: ['Infected', 'Recovered', 'Deaths'],
+              datasets:[{
+                  label: 'People',
+                  backgroundColor: [
+                      'rgba(0, 0, 255, 0.5)',
+                      'rgba(0, 255, 0, 0.5)',
+                      'rgba(255, 0, 0, 0.5)'
+                  ],
+                  data: [confirmed.value, recovered.value, deaths.value,]
+              }]
+          }}
+          options={{
+              legend: { display: false },
+              title: { display: true, text: `Current state in ${country}` }
+          }}
+          >
+        </Bar>) : (<div></div>)
+    )
 
     return(
         <div className={styles.container}>
-            <Linechart/>
+            { country ? Barchart() : Linechart() }
         </div>
     );
 };
