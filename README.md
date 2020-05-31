@@ -1,6 +1,8 @@
 # COVID-19 Tracker
 
-A React Application for the Covid 19 tracker for countries using charts
+A React Application for the Covid 19 tracker for countries displayed using charts, 
+I made this project using the online tutorial on youtube ![Covid-19-tracker](https://www.youtube.com/watch?v=khJlrj3Y6Ls&t=3568s)
+
 Dependencies used were:
 * Axios (used for the server calls)
 * react-chartjs-2 + chart.js (used to display line and bar chart)
