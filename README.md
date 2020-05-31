@@ -18,5 +18,5 @@ API used: https://covid19.mathdro.id/api
 ### Full Screenshot Large Screen:
 ![Full Laptop](./src/images/full_laptop.png)
 ### Full Screenshot Mobile:
-![Full Mobile](./src/images/full_mobile.png | width=100)
+![Full Mobile](./src/images/full_mobile.png)
 
